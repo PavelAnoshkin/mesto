@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./pages/index.css" rel="stylesheet">
+    <title>Mesto</title>
+</head>
+
+<body class="page">
+
+    <header class="header">
+        <div class="header__logo">
+        </div>
+    </header>
+
+    <main class="content">
+
+        <section class="profile">
+            <div class="profile__avatar-container">
+                <img class="profile__avatar" src="./images/Avatar.png" alt="Жак-Ив Кусто">
+                <div class="profile__info">
+                    <div class="profile__title-container">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button"></button>
+                    </div>
+                    <p class="profile__subtitle">Исследователь океана</p> 
+                </div>
+            </div>
+            <button class="profile__add-button">
+                <div class="profile__add-button-icon"></div> 
+            </button>        
+        </section>
+
+        <div class="popup">  
+            <div class="popup__container">
+                <button class="popup__btn popup__btn_action_close"></button>
+                <form class="popup__form"> 
+                    <h2 class="popup__header">Редактировать профиль</h2>
+                    <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" required>
+                    <input type="text" placeholder="О Себе" class="popup__input popup__input_type_description" required>
+                    <input type='submit' value="Сохранить" class="popup__btn popup__btn_action_submit">
+                </form>
+            </div> 
+        </div>
+
+        <section class="elements">
+            <div class="element"> 
+                <img class="element__image" src="./images/thomas-yohei-serf.png" alt="Серфинг на море">
+                <div class="element__container"> 
+                    <p class="element__header">Серфинг на море</p>
+                    <div class="element__like-btn"></div>
+                </div>
+            </div>
+            <div class="element"> 
+                <img class="element__image" src="./images/thomas-yohei-beach.png" alt="Пляж">
+                <div class="element__container"> 
+                    <h2 class="element__header">Пляж</h2>
+                    <div class="element__like-btn"></div>
+                </div>
+            </div>
+            <div class="element"> 
+                <img class="element__image" src="./images/birger-strahl-palace.png" alt="Индийский дворец">
+                <div class="element__container"> 
+                    <h2 class="element__header">Индийский дворец</h2>
+                    <div class="element__like-btn"></div>
+                </div>
+            </div>
+            <div class="element"> 
+                <img class="element__image" src="./images/michael-d-beckwith-lib.png" alt="Библиотека">
+                <div class="element__container"> 
+                    <h2 class="element__header">Библиотека</h2>
+                    <div class="element__like-btn"></div>
+                </div>
+            </div>
+            <div class="element"> 
+                <img class="element__image" src="./images/christian-garcia-road.png" alt="Дорога">
+                <div class="element__container"> 
+                    <h2 class="element__header">Дорога</h2>
+                    <div class="element__like-btn"></div>
+                </div>
+            </div>
+            <div class="element"> 
+                <img class="element__image" src="./images/tengyart-space.png" alt="Космос">
+                <div class="element__container"> 
+                    <h2 class="element__header">Космос</h2>
+                    <div class="element__like-btn"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <script src="./script/script.js"></script>
+</body>
+
+</html>

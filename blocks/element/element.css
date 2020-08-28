@@ -1,0 +1,13 @@
+@import url(./__image/element__image.css);
+@import url(./__container/element__container.css);
+@import url(./__header/element__header.css);
+@import url(./__like-btn/element__like-btn.css);
+
+.element {
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}

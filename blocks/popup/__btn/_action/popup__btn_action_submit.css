@@ -1,0 +1,27 @@
+.popup__btn_action_submit {
+    width: calc(100% - 72px);
+    height: 50px;
+    background: #000;
+    border-radius: 2px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 36px;
+    color: #FFFFFF;
+    transition: background 1s ease;
+}
+  
+  
+.popup__btn_action_submit:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transition: background 1s ease;
+}
+
+@media all and (max-width: 500px) {
+    .popup__btn_action_submit  {
+        width: calc(100% - 40px);
+    }
+}

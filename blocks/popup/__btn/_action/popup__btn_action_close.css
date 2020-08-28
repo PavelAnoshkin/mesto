@@ -1,0 +1,16 @@
+.popup__btn_action_close {
+    width: 40px;
+    height: 40px;
+    align-self: flex-end;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    background: url(../../../../images/close-button-logo.svg) no-repeat;	
+    background-position: center;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+  
+.popup__btn_action_close:hover {
+    opacity: 0.6;
+    transition: opacity 1s ease;
+}

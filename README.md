@@ -1,11 +1,11 @@
-# Проект 4: Место
+# Место
 
 ### Обзор
 
-* Figma
+* Макет
 * Картинки
 
-**Figma**
+**Макет**
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
 
