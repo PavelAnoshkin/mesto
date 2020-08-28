@@ -5,7 +5,7 @@
     margin: 0;
 }
 
-@media all and (max-width: 425px) {
+@media all and (max-width: 768px) {
     .profile__title-container {
         margin-bottom: 14px;;
     }

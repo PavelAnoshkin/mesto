@@ -5,12 +5,42 @@
     line-height: 1.33;
     margin: 0;
     margin-right: 17px;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    max-width: 500px;
 }
 
+
+@media all and (max-width: 940px) {
+    .profile__title {
+        max-width: 400px;
+    }
+}
+
+@media all and (max-width: 850px) {
+    .profile__title {
+        max-width: 320px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .profile__title {
+        max-width: 500px;
+    }
+}
+
+@media all and (max-width: 625px) {
+    .profile__title {
+        max-width: 330px;
+    }
+}
 
 @media all and (max-width: 425px) {
     .profile__title {
         font-size: 27px;
         line-height: 2.07;
+        max-width: 250px;
+        margin-right: 10px;
     }
 }

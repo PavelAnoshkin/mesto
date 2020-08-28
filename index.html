@@ -23,12 +23,12 @@
                 <div class="profile__info">
                     <div class="profile__title-container">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button"></button>
+                        <button class="profile__edit-button" type="button" aria-label="Отредактировать профиль"></button>
                     </div>
                     <p class="profile__subtitle">Исследователь океана</p> 
                 </div>
             </div>
-            <button class="profile__add-button"></button>        
+            <button class="profile__add-button" aria-label="Добавить новое место"></button>        
         </section>
 
         <section class="elements">
@@ -36,42 +36,42 @@
                 <img class="element__image" src="./images/thomas-yohei-serf.jpg" alt="Серфинг на море">
                 <div class="element__container"> 
                     <h2 class="element__header">Серфинг на море</h2>
-                    <button class="element__like-btn"></button>
+                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
                 </div>
             </div>
             <div class="element"> 
                 <img class="element__image" src="./images/thomas-yohei-beach.jpg" alt="Пляж">
                 <div class="element__container"> 
                     <h2 class="element__header">Пляж</h2>
-                    <button class="element__like-btn"></button>
+                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
                 </div>
             </div>
             <div class="element"> 
                 <img class="element__image" src="./images/birger-strahl-palace.jpg" alt="Индийский дворец">
                 <div class="element__container"> 
                     <h2 class="element__header">Индийский дворец</h2>
-                    <button class="element__like-btn"></button>
+                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
                 </div>
             </div>
             <div class="element"> 
                 <img class="element__image" src="./images/michael-d-beckwith-lib.jpg" alt="Библиотека">
                 <div class="element__container"> 
                     <h2 class="element__header">Библиотека</h2>
-                    <button class="element__like-btn"></button>
+                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
                 </div>
             </div>
             <div class="element"> 
                 <img class="element__image" src="./images/christian-garcia-road.jpg" alt="Дорога">
                 <div class="element__container"> 
                     <h2 class="element__header">Дорога</h2>
-                    <button class="element__like-btn"></button>
+                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
                 </div>
             </div>
             <div class="element"> 
                 <img class="element__image" src="./images/tengyart-space.jpg" alt="Космос">
                 <div class="element__container"> 
                     <h2 class="element__header">Космос</h2>
-                    <button class="element__like-btn"></button>
+                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
                 </div>
             </div>
         </section>
@@ -84,12 +84,12 @@
 
     <div class="popup">  
         <div class="popup__container">
-            <button class="popup__btn popup__btn_action_close"></button>
-            <form class="popup__form"> 
+            <button class="popup__btn popup__btn_action_close" type="button" aria-label="Закрыть попап"></button>
+            <form class="popup__form" name="profileEdit"> 
                 <h2 class="popup__header">Редактировать профиль</h2>
-                <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" required>
-                <input type="text" placeholder="О Себе" class="popup__input popup__input_type_description" required>
-                <button class="popup__btn popup__btn_action_submit">Сохранить</button>
+                <input type="text" name="profileName" placeholder="Имя" class="popup__input popup__input_type_name" required>
+                <input type="text" name="profileJob" placeholder="О Себе" class="popup__input popup__input_type_description" required>
+                <button class="popup__btn popup__btn_action_submit" type="submit">Сохранить</button>
             </form>
         </div> 
     </div>
