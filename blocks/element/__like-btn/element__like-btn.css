@@ -6,6 +6,8 @@
     cursor: pointer; 
     opacity: 1;
     transition: opacity 1s ease;
+    border: none;
+    outline: none;
 }
   
 .element__like-btn:hover {

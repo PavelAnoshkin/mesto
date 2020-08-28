@@ -6,7 +6,9 @@
     background-position: center;
     transition: opacity 1s ease;
     cursor: pointer;
-    background-size: 100%
+    background-size: 100%;
+    border: none;
+    outline: none;
 }
 
 .profile__edit-button:hover {
