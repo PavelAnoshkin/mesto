@@ -35,17 +35,17 @@ const updateProfileButton = document.querySelector('.profile__edit-button');
 const editProfilePopup = document.querySelector('.popup__edit-profile');
 const formEditProfile = editProfilePopup.querySelector('.popup__form');
 const cancelEditButton = editProfilePopup.querySelector('.popup__btn_action_close');
-let name = document.querySelector('.profile__title');
-let job = document.querySelector('.profile__subtitle');
-let nameInput = formEditProfile.querySelector('.popup__input_type_name');
-let jobInput = formEditProfile.querySelector('.popup__input_type_description');
+const name = document.querySelector('.profile__title'); 
+const job = document.querySelector('.profile__subtitle'); 
+const nameInput = formEditProfile.querySelector('.popup__input_type_name'); 
+const jobInput = formEditProfile.querySelector('.popup__input_type_description'); 
 
 const addPlaceButton = document.querySelector('.profile__add-button');
 const addPlacePopup = document.querySelector('.popup__add-place');
 const formAddPlace = addPlacePopup.querySelector('.popup__form');
 const cancelAddButton = addPlacePopup.querySelector('.popup__btn_action_close');
-let placeNameInput = formAddPlace.querySelector('.popup__input_type_place-name');
-let placeUrlInput = formAddPlace.querySelector('.popup__input_type_place-image-url');
+const placeNameInput = formAddPlace.querySelector('.popup__input_type_place-name'); 
+const placeUrlInput = formAddPlace.querySelector('.popup__input_type_place-image-url'); 
 
 const picturePreview = document.querySelector('.popup__picture-preview');
 const closePreviewButton = picturePreview.querySelector('.popup__btn_action_close');
@@ -63,7 +63,7 @@ function editFormClose () {
     editProfilePopup.classList.add('popup_closed');
 }
 
-function popupFadeOut (evt) {
+function fadeOutPopup (evt) {
     if (evt.animationName === 'fade-out') {
         evt.target.classList.remove('popup_closed');
      }
@@ -76,16 +76,10 @@ function editFormSubmitHandler (evt) {
     editFormClose();  
 }
 
-function addFormClose () {
-    placeNameInput.value = '';
-    placeUrlInput.value = '';
-    addPlacePopup.classList.toggle('popup_opened');
-    addPlacePopup.classList.add('popup_closed');
-}
-
-function previewClose () {
-    picturePreview.classList.remove('popup_opened');
-    picturePreview.classList.add('popup_closed');
+function keyHandlerEditForm (evt) {
+    if (evt.key === 'Enter' && nameInput.value !== '' && jobInput.value !== '') {
+        editFormSubmitHandler(evt);
+    }
 }
 
 function addElement (elementName, elementUrl) {   
@@ -124,6 +118,18 @@ function addElement (elementName, elementUrl) {
     elementContainer.prepend(element);
 }
 
+function addFormClose () {
+    placeNameInput.value = '';
+    placeUrlInput.value = '';
+    addPlacePopup.classList.toggle('popup_opened');
+    addPlacePopup.classList.add('popup_closed');
+}
+
+function closePreview () {
+    picturePreview.classList.remove('popup_opened');
+    picturePreview.classList.add('popup_closed');
+}
+
 function addFormSubmitHandler (evt) {
     evt.preventDefault();       
     addElement(placeNameInput.value, placeUrlInput.value);
@@ -132,17 +138,27 @@ function addFormSubmitHandler (evt) {
     addFormClose();  
 }
 
+function keyHandlerAddForm (evt) {
+    if (evt.key === 'Enter' && placeNameInput.value !== '' && placeUrlInput.value !== '') {
+        addFormSubmitHandler(evt);
+    }
+}
+
 updateProfileButton.addEventListener('click', editFormOpen);
 cancelEditButton.addEventListener('click', editFormClose);
 formEditProfile.addEventListener('submit', editFormSubmitHandler);
-editProfilePopup.addEventListener('animationend', (evt) => popupFadeOut(evt));
+editProfilePopup.addEventListener('animationend', (evt) => fadeOutPopup(evt));
+nameInput.addEventListener('keydown', keyHandlerEditForm);
+jobInput.addEventListener('keydown', keyHandlerEditForm);
 
 addPlaceButton.addEventListener('click', () => addPlacePopup.classList.toggle('popup_opened'));
 cancelAddButton.addEventListener('click', addFormClose);
 formAddPlace.addEventListener('submit', addFormSubmitHandler);
-addPlacePopup.addEventListener('animationend', (evt) => popupFadeOut(evt));
+addPlacePopup.addEventListener('animationend', (evt) => fadeOutPopup(evt));
+placeNameInput.addEventListener('keydown', keyHandlerAddForm); 
+placeUrlInput.addEventListener('keydown', keyHandlerAddForm);
 
-picturePreview.addEventListener('animationend', (evt) => popupFadeOut(evt));
-closePreviewButton.addEventListener('click', previewClose);
+picturePreview.addEventListener('animationend', (evt) => fadeOutPopup(evt));
+closePreviewButton.addEventListener('click', closePreview);
 
 initialCards.forEach(place => addElement(place.name, place.link));
