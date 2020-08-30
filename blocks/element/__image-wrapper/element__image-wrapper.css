@@ -1,0 +1,11 @@
+.element__image-wrapper {
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 1;
+    grid-column: 1;
+    position: relative;
+}

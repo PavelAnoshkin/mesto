@@ -8,9 +8,17 @@
     background-position: center;
     opacity: 1;
     transition: opacity 1s ease;
+    background-size: 140%;
 }
   
 .popup__btn_action_close:hover {
     opacity: 0.6;
     transition: opacity 1s ease;
+}
+
+@media all and (max-width: 425px) {
+    .popup__btn_action_close {
+        width: 30px;
+        height: 30px;
+    }
 }

@@ -1,0 +1,11 @@
+.popup__picture {
+    max-width: 75vw;
+    max-height: 75vh;
+}
+
+@media all and (max-width: 425px) {
+    .popup__picture {
+        max-width: calc(75vw - 10px);
+        max-height: calc(75vh - 10px);
+    }
+}

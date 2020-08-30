@@ -4,7 +4,7 @@
     font-size: 24px;
     line-height: 29px;
     color: #000000;
-    margin: 34px 36px 39px;
+    margin: 34px 36px 34px;
     align-self: flex-start;
 }
 
@@ -12,5 +12,7 @@
     .popup__header {
         margin-left: 20px;
         margin-right: 20px;
+        margin-top: 30px;
+        margin-bottom: 16px;
     }
 }

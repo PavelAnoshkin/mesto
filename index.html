@@ -31,49 +31,8 @@
             <button class="profile__add-button" type="button" aria-label="Добавить новое место"></button>        
         </section>
 
-        <section class="elements">
-            <div class="element"> 
-                <img class="element__image" src="./images/thomas-yohei-serf.jpg" alt="Серфинг на море">
-                <div class="element__container"> 
-                    <h2 class="element__header">Серфинг на море</h2>
-                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
-                </div>
-            </div>
-            <div class="element"> 
-                <img class="element__image" src="./images/thomas-yohei-beach.jpg" alt="Пляж">
-                <div class="element__container"> 
-                    <h2 class="element__header">Пляж</h2>
-                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
-                </div>
-            </div>
-            <div class="element"> 
-                <img class="element__image" src="./images/birger-strahl-palace.jpg" alt="Индийский дворец">
-                <div class="element__container"> 
-                    <h2 class="element__header">Индийский дворец</h2>
-                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
-                </div>
-            </div>
-            <div class="element"> 
-                <img class="element__image" src="./images/michael-d-beckwith-lib.jpg" alt="Библиотека">
-                <div class="element__container"> 
-                    <h2 class="element__header">Библиотека</h2>
-                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
-                </div>
-            </div>
-            <div class="element"> 
-                <img class="element__image" src="./images/christian-garcia-road.jpg" alt="Дорога">
-                <div class="element__container"> 
-                    <h2 class="element__header">Дорога</h2>
-                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
-                </div>
-            </div>
-            <div class="element"> 
-                <img class="element__image" src="./images/tengyart-space.jpg" alt="Космос">
-                <div class="element__container"> 
-                    <h2 class="element__header">Космос</h2>
-                    <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
-                </div>
-            </div>
+        <section class="elements">  
+
         </section>
 
     </main>
@@ -82,7 +41,7 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup">  
+    <div class="popup popup__edit-profile">  
         <div class="popup__container">
             <button class="popup__btn popup__btn_action_close" type="button" aria-label="Закрыть попап"></button>
             <form class="popup__form" name="profileEdit"> 
@@ -93,6 +52,43 @@
             </form>
         </div> 
     </div>
+
+    <div class="popup popup__add-place">  
+        <div class="popup__container">
+            <button class="popup__btn popup__btn_action_close" type="button" aria-label="Закрыть попап"></button>
+            <form class="popup__form" name="placeAdd"> 
+                <h2 class="popup__header">Новое место</h2>
+                <input type="text" name="placeName" placeholder="Название" class="popup__input popup__input_type_place-name" required>
+                <input type="text" name="placeImageUrl" placeholder="Ссылка на картинку" class="popup__input popup__input_type_place-image-url" required>
+                <button class="popup__btn popup__btn_action_submit" type="submit">Создать</button>
+            </form>
+        </div> 
+    </div>
+
+    <div class="popup popup__picture-preview">  
+        <div class="popup__picture-container">
+            <button class="popup__btn popup__btn_action_close" type="button" aria-label="Закрыть превью"></button>
+            <figure class="popup__picture-wrapper">
+                <img class="popup__picture" src="" alt="">
+                <figcaption class="popup__picture-caption"></figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <template id="element-template">
+        <div class="element"> 
+            <div class="element__image-container"> 
+                <div class="element__image-wrapper"> 
+                    <img class="element__image" src="" alt="">                    
+                </div>
+                <button class="element__delete-button" type="button" aria-label="Удалить место"></button>
+            </div>
+            <div class="element__container"> 
+                <h2 class="element__header"></h2>
+                <button class="element__like-btn" type="button" aria-label="Поставить лайк"></button>
+            </div>
+        </div>
+    </template>
 
     <script src="./script/script.js"></script>
 </body>
