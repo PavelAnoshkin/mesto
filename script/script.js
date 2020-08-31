@@ -1,35 +1,5 @@
-const initialCards = [
-    {
-        name: 'Дорога',
-        link: 'https://images.unsplash.com/photo-1593898918814-b7340e572cce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1301&q=80'
-    },
-    {
-        name: 'Отдых',
-        link: 'https://images.unsplash.com/photo-1598397678815-c5dc869035b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-    },
-    {
-        name: 'Сидней',
-        link: 'https://images.unsplash.com/photo-1598674804343-c41706c58d9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=695&q=80'
-    },
-    {
-        name: 'Горное озеро',
-        link: 'https://images.unsplash.com/photo-1598642965554-eaa5f0362997?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-    },
-    {
-        name: 'На вершине',
-        link: 'https://images.unsplash.com/photo-1598523959079-da7b0e3d7b39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=697&q=80'
-    },
-    {
-        name: 'Вид сверху',
-        link: 'https://images.unsplash.com/photo-1598580431211-3b32fe73167e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80'
-    },
-    {
-        name: 'Чайка',
-        link: 'https://images.unsplash.com/photo-1598493869856-4369b3eed556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-    }
-];
-
 const elementContainer =  document.querySelector('.elements');
+const elementTemplate = document.querySelector('#element-template').content;
 
 const updateProfileButton = document.querySelector('.profile__edit-button');
 const editProfilePopup = document.querySelector('.popup__edit-profile');
@@ -50,23 +20,24 @@ const placeUrlInput = formAddPlace.querySelector('.popup__input_type_place-image
 const picturePreview = document.querySelector('.popup__picture-preview');
 const closePreviewButton = picturePreview.querySelector('.popup__btn_action_close');
 
+function popupOpen (popup) {
+    popup.classList.add('popup_opened');
+}
+
+function popupClose (popup) {
+    popup.classList.remove('popup_opened');
+}
+
 function editFormOpen () {
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
-    editProfilePopup.classList.toggle('popup_opened');
+    popupOpen(editProfilePopup);
 }
 
 function editFormClose () {
     nameInput.value = '';
     jobInput.value = '';
-    editProfilePopup.classList.toggle('popup_opened');
-    editProfilePopup.classList.add('popup_closed');
-}
-
-function fadeOutPopup (evt) {
-    if (evt.animationName === 'fade-out') {
-        evt.target.classList.remove('popup_closed');
-     }
+    popupClose(editProfilePopup);
 }
 
 function editFormSubmitHandler (evt) {
@@ -82,38 +53,39 @@ function keyHandlerEditForm (evt) {
     }
 }
 
-function addElement (elementName, elementUrl) {   
-    
-    function deleteElement () {
-        const unnecessaryElement = deleteElementButton.closest('.element');
-        unnecessaryElement.remove();
-    }
+function deleteElement (evt) {
+    const unnecessaryElement = evt.target.closest('.element');
+    unnecessaryElement.remove();
+}
 
-    function picturePreviewOpen (evt) {
-        const popupPicture = picturePreview.querySelector('.popup__picture');
-        const popupPictureCaption = picturePreview.querySelector('.popup__picture-caption');
-        const element = evt.target.closest('.element');
-        const elementHeader = element.querySelector('.element__header');
-        
-        popupPicture.src = evt.target.src;
-        popupPictureCaption.textContent = elementHeader.textContent;
-        picturePreview.classList.toggle('popup_opened'); 
-    }
-        
-    const elementTemplate = document.querySelector('#element-template').content;
-    const element = elementTemplate.cloneNode(true);
+function addLike (evt) {
+    evt.target.classList.toggle('element__like-btn_checked')
+}
+
+function openPicturePreview (evt) {
+    const popupPicture = picturePreview.querySelector('.popup__picture');
+    const popupPictureCaption = picturePreview.querySelector('.popup__picture-caption');
+    const element = evt.target.closest('.element');
+    const elementHeader = element.querySelector('.element__header');
     
+    popupPicture.src = evt.target.src;
+    popupPictureCaption.textContent = elementHeader.textContent;
+    popupOpen(picturePreview);
+}
+
+function addElement (elementName, elementUrl) {    
+    const element = elementTemplate.cloneNode(true);    
     element.querySelector('.element__header').textContent = elementName;
-    element.querySelector('.element__image').src = elementUrl;
-    element.querySelector('.element__image').alt = elementName;
+
+    const elementImage = element.querySelector('.element__image');
+    elementImage.src = elementUrl;
+    elementImage.alt = elementName;
+    elementImage.addEventListener('click', evt => openPicturePreview(evt));
       
     const deleteElementButton = element.querySelector('.element__delete-button');    
     deleteElementButton.addEventListener('click', deleteElement);
     
-    element.querySelector('.element__like-btn').addEventListener('click', evt => evt.target.classList.toggle('element__like-btn_checked'));
-
-    const elementImage = element.querySelector('.element__image');
-    elementImage.addEventListener('click', evt => picturePreviewOpen(evt));
+    element.querySelector('.element__like-btn').addEventListener('click', addLike);    
 
     elementContainer.prepend(element);
 }
@@ -121,13 +93,11 @@ function addElement (elementName, elementUrl) {
 function addFormClose () {
     placeNameInput.value = '';
     placeUrlInput.value = '';
-    addPlacePopup.classList.toggle('popup_opened');
-    addPlacePopup.classList.add('popup_closed');
+    popupClose(addPlacePopup);
 }
 
 function closePreview () {
-    picturePreview.classList.remove('popup_opened');
-    picturePreview.classList.add('popup_closed');
+    popupClose(picturePreview);
 }
 
 function addFormSubmitHandler (evt) {
@@ -147,18 +117,15 @@ function keyHandlerAddForm (evt) {
 updateProfileButton.addEventListener('click', editFormOpen);
 cancelEditButton.addEventListener('click', editFormClose);
 formEditProfile.addEventListener('submit', editFormSubmitHandler);
-editProfilePopup.addEventListener('animationend', (evt) => fadeOutPopup(evt));
 nameInput.addEventListener('keydown', keyHandlerEditForm);
 jobInput.addEventListener('keydown', keyHandlerEditForm);
 
-addPlaceButton.addEventListener('click', () => addPlacePopup.classList.toggle('popup_opened'));
+addPlaceButton.addEventListener('click', () => popupOpen(addPlacePopup));
 cancelAddButton.addEventListener('click', addFormClose);
 formAddPlace.addEventListener('submit', addFormSubmitHandler);
-addPlacePopup.addEventListener('animationend', (evt) => fadeOutPopup(evt));
 placeNameInput.addEventListener('keydown', keyHandlerAddForm); 
 placeUrlInput.addEventListener('keydown', keyHandlerAddForm);
 
-picturePreview.addEventListener('animationend', (evt) => fadeOutPopup(evt));
 closePreviewButton.addEventListener('click', closePreview);
 
 initialCards.forEach(place => addElement(place.name, place.link));

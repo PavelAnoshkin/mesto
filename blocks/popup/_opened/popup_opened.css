@@ -1,14 +1,7 @@
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .popup_opened {
     display: flex;
     opacity: 0;
-    animation: fade-in 500ms linear forwards;
+    height: 100%;
+    opacity: 1;
+    transition: height 0s, opacity 500ms ease-in-out;
 }
