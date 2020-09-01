@@ -34,23 +34,11 @@ function editFormOpen () {
     popupOpen(editProfilePopup);
 }
 
-function editFormClose () {
-    nameInput.value = '';
-    jobInput.value = '';
-    popupClose(editProfilePopup);
-}
-
 function editFormSubmitHandler (evt) {
     evt.preventDefault();    
     name.textContent = nameInput.value;
     job.textContent = jobInput.value;
-    editFormClose();  
-}
-
-function keyHandlerEditForm (evt) {
-    if (evt.key === 'Enter' && nameInput.value !== '' && jobInput.value !== '') {
-        editFormSubmitHandler(evt);
-    }
+    popupClose(editProfilePopup); 
 }
 
 function deleteElement (evt) {
@@ -90,42 +78,25 @@ function addElement (elementName, elementUrl) {
     elementContainer.prepend(element);
 }
 
-function addFormClose () {
-    placeNameInput.value = '';
-    placeUrlInput.value = '';
-    popupClose(addPlacePopup);
-}
-
-function closePreview () {
-    popupClose(picturePreview);
-}
-
 function addFormSubmitHandler (evt) {
     evt.preventDefault();       
     addElement(placeNameInput.value, placeUrlInput.value);
-    placeNameInput.value='';
-    placeUrlInput.value='';
-    addFormClose();  
-}
-
-function keyHandlerAddForm (evt) {
-    if (evt.key === 'Enter' && placeNameInput.value !== '' && placeUrlInput.value !== '') {
-        addFormSubmitHandler(evt);
-    }
+    popupClose(addPlacePopup);
 }
 
 updateProfileButton.addEventListener('click', editFormOpen);
-cancelEditButton.addEventListener('click', editFormClose);
+cancelEditButton.addEventListener('click', () => popupClose(editProfilePopup));
 formEditProfile.addEventListener('submit', editFormSubmitHandler);
-nameInput.addEventListener('keydown', keyHandlerEditForm);
-jobInput.addEventListener('keydown', keyHandlerEditForm);
 
-addPlaceButton.addEventListener('click', () => popupOpen(addPlacePopup));
-cancelAddButton.addEventListener('click', addFormClose);
+addPlaceButton.addEventListener('click', () => {
+    placeNameInput.value='';
+    placeUrlInput.value='';
+    popupOpen(addPlacePopup);
+});
+
+cancelAddButton.addEventListener('click', () => popupClose(addPlacePopup));
 formAddPlace.addEventListener('submit', addFormSubmitHandler);
-placeNameInput.addEventListener('keydown', keyHandlerAddForm); 
-placeUrlInput.addEventListener('keydown', keyHandlerAddForm);
 
-closePreviewButton.addEventListener('click', closePreview);
+closePreviewButton.addEventListener('click', () => popupClose(picturePreview));
 
 initialCards.forEach(place => addElement(place.name, place.link));
