@@ -1,0 +1,9 @@
+@import url(../__button/_action/popup__button_action_close.css);
+@import url(../__button/_action/popup__button_action_submit.css);
+
+.popup__button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+

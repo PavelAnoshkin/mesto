@@ -5,17 +5,13 @@
     font-weight: normal;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    padding-top: 20px;
+    padding-top: 13px;
     padding-bottom: 12px;
     margin: 0;
-    margin-bottom: 13px;
+    margin-bottom: 5px;
     box-sizing: border-box;
     width: calc(100% - 72px);
     outline: none;
-}
-
-.popup__input:last-of-type {
-    margin-bottom: 0;
 }
 
 .popup__input::placeholder { 

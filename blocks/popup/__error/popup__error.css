@@ -1,0 +1,20 @@
+.popup__error {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    min-height: 15px;
+    text-align: left;
+    color: #f00;
+    width: calc(100% - 72px);
+    margin: 0;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+
+}
+
+@media all and (max-width: 500px) {
+    .popup__error  {
+        width: calc(100% - 40px);
+    }
+}

@@ -41,33 +41,37 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup popup__edit-profile">  
+    <div class="popup popup__edit-profile" tabindex="-1">
         <div class="popup__container">
-            <button class="popup__btn popup__btn_action_close" type="button" aria-label="Закрыть попап"></button>
-            <form class="popup__form" name="profileEdit"> 
+            <button class="popup__button popup__button_action_close" type="button" aria-label="Закрыть попап"></button>
+            <form class="popup__form" name="profileEdit" novalidate> 
                 <h2 class="popup__header">Редактировать профиль</h2>
-                <input type="text" name="profileName" placeholder="Имя" class="popup__input popup__input_type_name" required>
-                <input type="text" name="profileJob" placeholder="О Себе" class="popup__input popup__input_type_description" required>
-                <button class="popup__btn popup__btn_action_submit" type="submit">Сохранить</button>
+                <input id="profileName-input" type="text" name="profileName" placeholder="Имя" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required>
+                <span id="profileName-input-error" class="popup__error">Необходимо заполнить данное поле</span>
+                <input id="profileJob-input" type="text" name="profileJob" placeholder="О Себе" class="popup__input popup__input_type_description" minlength="2" maxlength="200" required>
+                <span id="profileJob-input-error" class="popup__error">Необходимо заполнить данное поле</span>
+                <button class="popup__button popup__button_action_submit" type="submit">Сохранить</button>
             </form>
         </div> 
     </div>
 
-    <div class="popup popup__add-place">  
+    <div class="popup popup__add-place" tabindex="-1">  
         <div class="popup__container">
-            <button class="popup__btn popup__btn_action_close" type="button" aria-label="Закрыть попап"></button>
-            <form class="popup__form" name="placeAdd"> 
+            <button class="popup__button popup__button_action_close" type="button" aria-label="Закрыть попап"></button>
+            <form class="popup__form" name="placeAdd" novalidate> 
                 <h2 class="popup__header">Новое место</h2>
-                <input type="text" name="placeName" placeholder="Название" class="popup__input popup__input_type_place-name" required>
-                <input type="url" name="placeImageUrl" placeholder="Ссылка на картинку" class="popup__input popup__input_type_place-image-url" required>
-                <button class="popup__btn popup__btn_action_submit" type="submit">Создать</button>
+                <input id="placeName-input" type="text" name="placeName" placeholder="Название" class="popup__input popup__input_type_place-name" minlength="1" maxlength="30" required>
+                <span id="placeName-input-error" class="popup__error">Необходимо заполнить данное поле</span>
+                <input id="placeImageUrl-input" type="url" name="placeImageUrl" placeholder="Ссылка на картинку" class="popup__input popup__input_type_place-image-url" required>
+                <span id="placeImageUrl-input-error" class="popup__error">Необходимо заполнить данное поле</span>
+                <button class="popup__button popup__button_action_submit" type="submit">Создать</button>
             </form>
         </div> 
     </div>
 
-    <div class="popup popup__picture-preview">  
+    <div class="popup popup__picture-preview" tabindex="-1">  
         <div class="popup__picture-container">
-            <button class="popup__btn popup__btn_action_close" type="button" aria-label="Закрыть превью"></button>
+            <button class="popup__button popup__button_action_close" type="button" aria-label="Закрыть превью"></button>
             <figure class="popup__picture-wrapper">
                 <img class="popup__picture" src="./images/element.png" alt="Описание">
                 <figcaption class="popup__picture-caption"></figcaption>
@@ -91,6 +95,7 @@
     </template>
 
     <script src="./script/feed.js"></script>
+    <script src="./script/validate.js"></script>
     <script src="./script/script.js"></script>
 </body>
 
