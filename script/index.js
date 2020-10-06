@@ -1,3 +1,7 @@
+import { Card } from '../script/Card.js'; 
+import { FormValidator } from '../script/FormValidator.js'; 
+import { initialCards } from '../script/Feed.js'; 
+
 const elementContainer =  document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content;
 
@@ -48,6 +52,36 @@ function closePopup (popup) {
     popup.removeEventListener('keydown', closePopupKeyEsc);   
 }
 
+function clearInputError (formElement, validaitionForm) {
+    const inputList = Array.from(formElement.querySelectorAll(validaitionForm.inputSelector));
+    const buttonElement = formElement.querySelector(validaitionForm.submitButtonSelector); 
+    toggleButtonState(inputList, buttonElement, validaitionForm);
+    inputList.forEach((inputElement) => hideInputError(formElement, inputElement, validaitionForm));    
+}
+
+function hasInvalidInput (inputList) {
+    return inputList.some((inputElement) => {
+        return !inputElement.validity.valid;
+    });
+};
+
+function toggleButtonState (inputList, buttonElement, validaitionForm) {
+    if (hasInvalidInput(inputList)) {
+        buttonElement.classList.add(validaitionForm.inactiveButtonClass);
+        buttonElement.disabled = true; 
+    } else {
+        buttonElement.classList.remove(validaitionForm.inactiveButtonClass);
+        buttonElement.disabled = false; 
+    }  
+};
+
+function hideInputError (formElement, inputElement, validaitionForm) {
+    const errorElement  = formElement.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.remove(validaitionForm.inputErrorClass);
+    errorElement.classList.remove(validaitionForm.errorClass);
+    errorElement.textContent = '';
+};
+
 function editFormOpen () {
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
@@ -70,47 +104,31 @@ function addFormOpen () {
     openPopup(addPlacePopup);
 }
 
-function deleteElement (evt) {
-    const unnecessaryElement = evt.target.closest('.element');
-    unnecessaryElement.remove();
-}
-
-function addLike (evt) {
-    evt.target.classList.toggle('element__like-button_checked')
-}
-
 function openPicturePreview (evt) {
     const popupPicture = picturePreview.querySelector('.popup__picture');
     const popupPictureCaption = picturePreview.querySelector('.popup__picture-caption');
     const element = evt.target.closest('.element');
-    const elementHeader = element.querySelector('.element__header');
-    
+    const elementHeader = element.querySelector('.element__header');    
     popupPicture.src = evt.target.src;
     popupPictureCaption.textContent = elementHeader.textContent;
     openPopup(picturePreview);
 }
 
-function addElement (elementName, elementUrl) {    
-    const element = elementTemplate.cloneNode(true);    
-    element.querySelector('.element__header').textContent = elementName;
-
-    const elementImage = element.querySelector('.element__image');
-    elementImage.src = elementUrl;
-    elementImage.alt = elementName;
-    elementImage.addEventListener('click', evt => openPicturePreview(evt));
-      
-    const deleteElementButton = element.querySelector('.element__delete-button');    
-    deleteElementButton.addEventListener('click', deleteElement);
-    
-    element.querySelector('.element__like-button').addEventListener('click', addLike);    
-
-    elementContainer.prepend(element);
+function addElement (item) { 
+    const card = new Card (item, '#element-template');
+    const cardElement = card.generateCard();
+    cardElement.querySelector('.element__image')
+        .addEventListener('click', evt => openPicturePreview(evt));
+    elementContainer.prepend(cardElement);
 }
 
 function addFormSubmitHandler (evt) {
     evt.preventDefault(); 
     const inputList = Array.from(addPlacePopup.querySelectorAll('.popup__input'));
-    addElement(placeNameInput.value, placeUrlInput.value);
+    const item = {};
+    item.name = placeNameInput.value;
+    item.link = placeUrlInput.value;
+    addElement(item);
     closePopup(addPlacePopup);    
 }
 
@@ -131,6 +149,10 @@ formEditProfile.addEventListener('submit', editFormSubmitHandler);
 addPlaceButton.addEventListener('click', addFormOpen);
 formAddPlace.addEventListener('submit', addFormSubmitHandler);
 
-initialCards.forEach((place) => addElement(place.name, place.link));
+initialCards.forEach((item) => addElement(item));
 
-enableValidation(popupFormValidation);
+const editProfileForm = new FormValidator (popupFormValidation, '.popup_edit-profile');
+editProfileForm.enableValidation();
+
+const addPlaceForm = new FormValidator (popupFormValidation, '.popup_add-place');
+addPlaceForm.enableValidation(); 
