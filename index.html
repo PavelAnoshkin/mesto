@@ -44,7 +44,7 @@
     <div class="popup popup_edit-profile" tabindex="-1">
         <div class="popup__container">
             <button class="popup__button popup__button_action_close" type="button" aria-label="Закрыть попап"></button>
-            <form class="popup__form" name="profileEdit" novalidate> 
+            <form class="popup__form popup__form_edit" name="profileEdit" novalidate> 
                 <h2 class="popup__header">Редактировать профиль</h2>
                 <input id="profileName-input" type="text" name="profileName" placeholder="Имя" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required>
                 <span id="profileName-input-error" class="popup__error">Необходимо заполнить данное поле</span>
@@ -58,7 +58,7 @@
     <div class="popup popup_add-place" tabindex="-1">  
         <div class="popup__container">
             <button class="popup__button popup__button_action_close" type="button" aria-label="Закрыть попап"></button>
-            <form class="popup__form" name="placeAdd" novalidate> 
+            <form class="popup__form popup__form_add" name="placeAdd" novalidate> 
                 <h2 class="popup__header">Новое место</h2>
                 <input id="placeName-input" type="text" name="placeName" placeholder="Название" class="popup__input popup__input_type_place-name" minlength="1" maxlength="30" required>
                 <span id="placeName-input-error" class="popup__error">Необходимо заполнить данное поле</span>
@@ -94,8 +94,9 @@
         </div>
     </template>
 
-    <script type="module" src="./script/feed.js"></script>
+    <script type="module" src="./script/Feed.js"></script>
     <script type="module" src="./script/Card.js"></script>
+    <script type="module" src="./script/Utils.js"></script>
     <script type="module" src="./script/FormValidator.js"></script>
     <script type="module" src="./script/index.js"></script>
 </body>

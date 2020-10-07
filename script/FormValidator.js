@@ -1,17 +1,16 @@
 export class FormValidator {
-    constructor(data, popupSelector) {        
-        this._formSelector = data.formSelector;
+    constructor(data, formSelector) {        
         this._inputSelector = data.inputSelector;
         this._submitButtonSelector = data.submitButtonSelector;
         this._inactiveButtonClass = data.inactiveButtonClass;
         this._inputErrorClass = data.inputErrorClass;
         this._errorClass = data.errorClass;
 
-        this._popupSelector = popupSelector;
+        this._formSelector = formSelector;
     } 
 
     enableValidation() {
-        this._element = document.querySelector(this._popupSelector).querySelector(this._formSelector);
+        this._element = document.querySelector(this._formSelector);
         this._element.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });

@@ -1,3 +1,7 @@
+import { 
+    openPicturePreview
+} from '../script/Utils.js';  
+
 export class Card {
     constructor(item, cardSelector) {
 		this._name = item.name;
@@ -30,11 +34,15 @@ export class Card {
     _setEventListeners() {
         this._element.querySelector('.element__delete-button').addEventListener('click', () => {
             this._deleteElement()
+            this._element = null;
         });
 
         this._element.querySelector('.element__like-button').addEventListener('click', () => { 
             this._addLike()
-        });   
+        });
+        
+        this._element.querySelector('.element__image')
+            .addEventListener('click', (evt) => openPicturePreview(evt));
     }
     
     _deleteElement() {
