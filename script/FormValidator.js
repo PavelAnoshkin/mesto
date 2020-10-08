@@ -17,6 +17,13 @@ export class FormValidator {
         this._setEventListeners();
     };
 
+    clearInputError () {
+        const inputList = Array.from(this._element.querySelectorAll(this._inputSelector));
+        const buttonElement = this._element.querySelector(this._submitButtonSelector); 
+        this._toggleButtonState(inputList, buttonElement);
+        inputList.forEach((inputElement) => this._hideInputError(inputElement));    
+    }
+
     _setEventListeners () {
         const inputList = Array.from(this._element.querySelectorAll(this._inputSelector));
         const buttonElement = this._element.querySelector(this._submitButtonSelector);
@@ -68,5 +75,5 @@ export class FormValidator {
         errorElement.classList.remove(this._errorClass);
         errorElement.textContent = '';
     };    
-    
+
 }

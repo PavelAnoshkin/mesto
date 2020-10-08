@@ -3,8 +3,7 @@ import { FormValidator } from '../script/FormValidator.js';
 import { initialCards } from '../script/Feed.js';
 import {
     openPopup,
-    closePopup,
-    clearInputError
+    closePopup
 } from '../script/Utils.js';  
 
 const elementContainer =  document.querySelector('.elements');
@@ -39,7 +38,7 @@ const popupFormValidation = {
 function editFormOpen () {
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
-    clearInputError(editProfilePopup, popupFormValidation);
+    editProfileForm.clearInputError();
     openPopup(editProfilePopup);
 }
 
@@ -53,7 +52,7 @@ function editFormSubmitHandler (evt) {
 function addFormOpen () {
     placeNameInput.value='';
     placeUrlInput.value='';
-    clearInputError(addPlacePopup, popupFormValidation);
+    addPlaceForm.clearInputError();
     openPopup(addPlacePopup);
 }
 
