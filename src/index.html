@@ -16,7 +16,18 @@
 
     <main class="content">
 
-        <section class="profile">   
+        <section class="profile">
+            <div class="profile__avatar-container">
+                <img class="profile__avatar" src="./images/profile-avatar.png" alt="Жак-Ив Кусто">
+                <div class="profile__info">
+                    <div class="profile__title-container">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button" type="button" aria-label="Отредактировать профиль"></button>
+                    </div>
+                    <p class="profile__subtitle">Исследователь океана</p> 
+                </div>
+            </div>
+            <button class="profile__add-button" type="button" aria-label="Добавить новое место"></button>   
         </section>
 
         <section class="elements">
@@ -66,19 +77,9 @@
         </div>
     </div>
 
-    <template class="profile-template">
-        <div class="profile__avatar-container">
-            <img class="profile__avatar" src="./images/profile-avatar.png" alt="Жак-Ив Кусто">
-            <div class="profile__info">
-                <div class="profile__title-container">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button" type="button" aria-label="Отредактировать профиль"></button>
-                </div>
-                <p class="profile__subtitle">Исследователь океана</p> 
-            </div>
-        </div>
-        <button class="profile__add-button" type="button" aria-label="Добавить новое место"></button>      
-    </template>
+
+             
+
 
     <template class='element-template'>
         <div class="element"> 

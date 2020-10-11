@@ -9,8 +9,6 @@ import FormValidator from '../script/FormValidator.js';
 import { 
     initialCards, 
     popupFormValidation, 
-    profileSection,
-    profileTemplate,
     elementSection,
     elementTemplate
 } from '../script/constaints.js';
@@ -43,14 +41,16 @@ function openAddForm () {
     addPlacePopup.open();
 }
 
-const profileRenderer = new Section({ data: [] }, profileSection);
-
-const profileElement = document
-          .querySelector(profileTemplate)
-          .content
-          .cloneNode(true);
-
-profileRenderer.addItem(profileElement);
+function addCard (item) {
+    const card = new Card (
+        item, 
+        elementTemplate,
+        (evt) => openPicturePreview(evt)
+    );
+    
+    const cardElement = card.generateCard();
+    elementList.addItem(cardElement);
+}
 
 const addPlaceButton = document.querySelector('.profile__add-button');
 addPlaceButton.addEventListener('click', openAddForm);
@@ -59,17 +59,8 @@ const updateProfileButton = document.querySelector('.profile__edit-button');
 updateProfileButton.addEventListener('click', openEditForm);
 
 const elementList = new Section({
-    items: initialCards,
-    renderer: (item) => {
-        const card = new Card (
-            item, 
-            elementTemplate,
-            (evt) => { openPicturePreview(evt) }
-        );
-        
-        const cardElement = card.generateCard();
-        elementList.addItem(cardElement);
-      },
+        items: initialCards,
+        renderer: (item) => addCard(item)
     },
     elementSection
 );
@@ -91,15 +82,7 @@ const addPlacePopup = new PopupWithForm ('.popup_add-place', (data) => {
         name : data.placeName, 
         link : data.placeImageUrl 
     };
-
-    const card = new Card (
-        item, 
-        elementTemplate,
-        (evt) => { openPicturePreview(evt) }
-    );
-    
-    const cardElement = card.generateCard();
-    elementList.addItem(cardElement);
+    addCard(item);    
 });
 
 addPlacePopup.setEventListeners();

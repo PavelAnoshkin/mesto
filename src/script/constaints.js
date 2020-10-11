@@ -38,8 +38,5 @@ export const popupFormValidation = {
     errorClass: 'popup__error_active'
 };
 
-export const profileSection = '.profile';
-export const profileTemplate = '.profile-template';
-
 export const elementSection = '.elements';
 export const elementTemplate = '.element-template';
