@@ -28,3 +28,18 @@ export const initialCards = [
         link: 'https://images.unsplash.com/photo-1598493869856-4369b3eed556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
     }
 ];
+
+export const popupFormValidation = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button_action_submit',
+    inactiveButtonClass: 'popup__button_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_active'
+};
+
+export const profileSection = '.profile';
+export const profileTemplate = '.profile-template';
+
+export const elementSection = '.elements';
+export const elementTemplate = '.element-template';

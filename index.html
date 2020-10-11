@@ -17,23 +17,11 @@
 
     <main class="content">
 
-        <section class="profile">
-            <div class="profile__avatar-container">
-                <img class="profile__avatar" src="./images/profile-avatar.png" alt="Жак-Ив Кусто">
-                <div class="profile__info">
-                    <div class="profile__title-container">
-                        <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button" type="button" aria-label="Отредактировать профиль"></button>
-                    </div>
-                    <p class="profile__subtitle">Исследователь океана</p> 
-                </div>
-            </div>
-            <button class="profile__add-button" type="button" aria-label="Добавить новое место"></button>        
+        <section class="profile">   
         </section>
 
-        <section class="elements">  
-
-        </section>
+        <section class="elements">
+        </section> 
 
     </main>
 
@@ -48,7 +36,7 @@
                 <h2 class="popup__header">Редактировать профиль</h2>
                 <input id="profileName-input" type="text" name="profileName" placeholder="Имя" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required>
                 <span id="profileName-input-error" class="popup__error">Необходимо заполнить данное поле</span>
-                <input id="profileJob-input" type="text" name="profileJob" placeholder="О Себе" class="popup__input popup__input_type_description" minlength="2" maxlength="200" required>
+                <input id="profileJob-input" type="text" name="profileJob" placeholder="О Себе" class="popup__input popup__input_type_job" minlength="2" maxlength="200" required>
                 <span id="profileJob-input-error" class="popup__error">Необходимо заполнить данное поле</span>
                 <button class="popup__button popup__button_action_submit" type="submit">Сохранить</button>
             </form>
@@ -79,7 +67,21 @@
         </div>
     </div>
 
-    <template id="element-template">
+    <template class="profile-template">
+        <div class="profile__avatar-container">
+            <img class="profile__avatar" src="./images/profile-avatar.png" alt="Жак-Ив Кусто">
+            <div class="profile__info">
+                <div class="profile__title-container">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-button" type="button" aria-label="Отредактировать профиль"></button>
+                </div>
+                <p class="profile__subtitle">Исследователь океана</p> 
+            </div>
+        </div>
+        <button class="profile__add-button" type="button" aria-label="Добавить новое место"></button>      
+    </template>
+
+    <template class='element-template'>
         <div class="element"> 
             <div class="element__image-container"> 
                 <div class="element__image-wrapper"> 
@@ -94,11 +96,7 @@
         </div>
     </template>
 
-    <script type="module" src="./script/Feed.js"></script>
-    <script type="module" src="./script/Card.js"></script>
-    <script type="module" src="./script/Utils.js"></script>
-    <script type="module" src="./script/FormValidator.js"></script>
-    <script type="module" src="./script/index.js"></script>
+    <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>
