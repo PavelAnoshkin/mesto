@@ -1,5 +1,7 @@
 @import url(./__avatar-container/profile__avatar-container.css);
 @import url(./__avatar/profile__avatar.css);
+@import url(./__avatar-image-container/profile__avatar-image-container.css);
+@import url(./__avatar-edit-button/profile__avatar-edit-button.css);
 @import url(./__title-container/profile__title-container.css);
 @import url(./__info/profile__info.css);
 @import url(./__title/profile__title.css);
@@ -29,7 +31,6 @@
         margin: 38px auto 36px;
     }
 }
-
 
 @media all and (max-width: 425px) {
     .profile {

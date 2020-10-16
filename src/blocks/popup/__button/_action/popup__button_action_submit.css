@@ -8,7 +8,6 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    margin-top: 31px;
     margin-bottom: 36px;
     color: #FFFFFF;
     transition: background 1s ease;
@@ -23,7 +22,6 @@
 @media all and (max-width: 500px) {
     .popup__button_action_submit  {
         width: calc(100% - 40px);
-        margin-top: 36px;
         margin-bottom: 30px;
         height: 40px;
         font-size: 14px;

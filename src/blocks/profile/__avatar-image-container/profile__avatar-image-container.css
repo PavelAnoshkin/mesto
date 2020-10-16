@@ -1,0 +1,16 @@
+.profile__avatar-image-container {
+    width: 120px;
+    height: 120px;
+    margin-right: 30px;
+    border-radius: 50%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+@media all and (max-width: 768px) {
+    .profile__avatar-image-container {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

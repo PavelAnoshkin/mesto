@@ -13,6 +13,10 @@
 
 }
 
+.popup__error:last-of-type {
+    margin-bottom: 31px;
+}
+
 @media all and (max-width: 500px) {
     .popup__error  {
         width: calc(100% - 40px);
