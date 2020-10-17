@@ -22,4 +22,8 @@ export default class UserInfo {
         this._avatar.src = data.profileAvatar;
         this._id = data.profileId;
     }
+
+    setAvatarImage(data) {
+        this._avatar.src = data.avatar;
+    }
 }    

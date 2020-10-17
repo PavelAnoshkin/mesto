@@ -12,9 +12,8 @@ import {
     elementSection,
     elementTemplate,
     authorizationToken,
-    groupID,
-    userID
-} from '../components/constaints.js';
+    groupID
+} from '../utils/constaints.js';
 
 function openPicturePreview (evt) {
     const elementHeader = evt.target.closest('.element')
@@ -61,7 +60,7 @@ function addCard (item) {
     const card = new Card (
         item, 
         elementTemplate,
-        userID,
+        userData.getUserInfo().id,
         (evt) => openPicturePreview(evt),
         (item) => openDeleteCardPopup (item),
         (id) => { 
@@ -78,33 +77,6 @@ function addCard (item) {
 
 function openDeleteCardPopup (item) {   
     deleteCardPopup.open(item);
-}
-
-function getUser() {
-    return api.getInfo()
-        .then(result => {
-            userData.setUserInfo(
-                {
-                    profileName: result.name,
-                    profileJob: result.about,
-                    profileAvatar: result.avatar,
-                    profileId: result._id
-                }
-            );
-        })
-        .catch(err => { 
-            console.log(`Ошибка получения профиля: ${err}`)
-        });
-};
-
-function getCards() {
-    return api.getInitialCards()
-        .then(result => {
-            elementList.renderItems(result);
-        })
-        .catch(err => { 
-            console.log(`Ошибка при получении карточек: ${err}`)
-        });
 }
 
 const api = new Api({
@@ -176,7 +148,7 @@ const editAvatarPopup = new PopupWithForm ('.popup_edit-avatar', (data) => {
 
     return api.patchAvatar(item)
         .then(result => {
-            document.querySelector('.profile__avatar').src = result.avatar; 
+            userData.setAvatarImage(result)           
         })
         .catch(err => { 
             console.log(`Ошибка при сохранении аватара: ${err}`)
@@ -204,5 +176,21 @@ addPlaceForm.enableValidation();
 const editAvatarForm = new FormValidator (popupFormValidation, '.popup__form_edit-avatar');
 editAvatarForm.enableValidation(); 
 
-getUser();
-getCards();
+Promise.all([
+    api.getUserInfo(),
+    api.getInitialCards()
+])
+    .then((values) => {
+        userData.setUserInfo(
+            {
+                profileName: values[0].name,
+                profileJob: values[0].about,
+                profileAvatar: values[0].avatar,
+                profileId: values[0]._id
+            }
+        );
+        elementList.renderItems(values[1]);
+    })
+    .catch((err) => {
+        console.log(`Ошибка при получении данных при загрузке: ${err}`);
+    })

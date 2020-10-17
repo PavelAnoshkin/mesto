@@ -33,20 +33,21 @@ export default class PopupWithForm extends Popup {
 
         this._element.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            if (JSON.stringify(this._values) === '{}') {
-            
+            if (JSON.stringify(this._values) === '{}') {            
                 this._isSaving(true);    
                
                 this._handleFormSubmit(this._getInputValues())
+                    .then(() => { 
+                        this.close() 
+                    })
                     .finally(() => {
-                        this.close();
                         this._isSaving(false);
                     }
                 );
             } else {
                 this._handleFormSubmit(this._values)
-                    .finally(() => {
-                        this.close();
+                    .then(() => { 
+                        this.close() 
                     }
                 ); 
             }
