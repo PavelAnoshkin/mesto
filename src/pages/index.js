@@ -117,9 +117,6 @@ const editProfilePopup = new PopupWithForm ('.popup_edit-profile', (data) => {
                     profileAvatar: result.avatar
                 }
             );
-        })
-        .catch(err => { 
-            console.log(`Ошибка при сохранения профиля: ${err}`)
         });    
 });
 editProfilePopup.setEventListeners();
@@ -133,11 +130,7 @@ const addPlacePopup = new PopupWithForm ('.popup_add-place', (data) => {
     return api.postCard(item)
         .then(result => {
             addCard(result);
-        })
-        .catch(err => { 
-            console.log(`Ошибка при сохранении карточки: ${err}`)
-        }); 
-     
+        })     
 });
 addPlacePopup.setEventListeners();
 
@@ -149,10 +142,7 @@ const editAvatarPopup = new PopupWithForm ('.popup_edit-avatar', (data) => {
     return api.patchAvatar(item)
         .then(result => {
             userData.setAvatarImage(result)           
-        })
-        .catch(err => { 
-            console.log(`Ошибка при сохранении аватара: ${err}`)
-        });      
+        });
 });
 editAvatarPopup.setEventListeners();
 
@@ -160,10 +150,7 @@ const deleteCardPopup = new PopupWithForm ('.popup_delete-place', (card) => {
     return api.deleteCard(card.getId())
         .then(() => {
             card.deleteElement();
-        })
-        .catch(err => { 
-            console.log(`Ошибка при удалении карточки: ${err}`)
-        }); 
+        });
 });
 deleteCardPopup.setEventListeners();
 
@@ -180,16 +167,16 @@ Promise.all([
     api.getUserInfo(),
     api.getInitialCards()
 ])
-    .then((values) => {
+    .then(([profileData, cards]) => {
         userData.setUserInfo(
             {
-                profileName: values[0].name,
-                profileJob: values[0].about,
-                profileAvatar: values[0].avatar,
-                profileId: values[0]._id
+                profileName:profileData.name,
+                profileJob: profileData.about,
+                profileAvatar: profileData.avatar,
+                profileId: profileData._id
             }
         );
-        elementList.renderItems(values[1]);
+        elementList.renderItems(cards);
     })
     .catch((err) => {
         console.log(`Ошибка при получении данных при загрузке: ${err}`);

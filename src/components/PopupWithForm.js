@@ -40,6 +40,9 @@ export default class PopupWithForm extends Popup {
                     .then(() => { 
                         this.close() 
                     })
+                    .catch(err => { 
+                        console.log(`Ошибка при сохранении: ${err}`)
+                    })
                     .finally(() => {
                         this._isSaving(false);
                     }
@@ -48,10 +51,12 @@ export default class PopupWithForm extends Popup {
                 this._handleFormSubmit(this._values)
                     .then(() => { 
                         this.close() 
-                    }
-                ); 
+                    })
+                    .catch(err => { 
+                        console.log(`Ошибка при сохранении: ${err}`)
+                    })
             }
-        }) 
+        })
     }
 
     close() {
